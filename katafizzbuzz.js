@@ -20,7 +20,7 @@
  * the number and for the multiples of five print "Buzz".
  For numbers which are multiples of both three and five print "FizzBuzz?"*/
 
-for( var i = 0 ; i <= 100 ; i++ ){
+for( var i = 0 ; i <= 30 ; i++ ){
   var result = '';
 
   if( i%3===0 ){
@@ -37,3 +37,21 @@ for( var i = 0 ; i <= 100 ; i++ ){
 
   console.log( '--> i : ' + result );
 }
+
+
+var idea2 = Array.apply( null, Array( 30 ) ).map( function ( x, i ) { return i } ).map( function( i ) {
+  var result = '';
+  if( i%3===0 ){
+    result +='Fizz';
+  }
+
+  if( i%5===0 ){
+    result +='Buzz';
+  }
+
+  if( i%3!==0 && i%5!==0 ){
+    result +=i;
+  }
+  return result;
+});
+console.log( idea2.join(', ') );
