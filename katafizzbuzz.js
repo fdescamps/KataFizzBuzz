@@ -20,26 +20,27 @@
  * the number and for the multiples of five print "Buzz".
  For numbers which are multiples of both three and five print "FizzBuzz?"*/
 
+// idea 1
+var idea1 = [];
 for( var i = 0 ; i <= 30 ; i++ ){
-  var result = '';
+  idea1[i] = '';
 
   if( i%3===0 ){
-    result +='Fizz';
+    idea1[i] = idea1[i] + 'Fizz';
   }
 
   if( i%5===0 ){
-    result +='Buzz';
+    idea1[i] = idea1[i] + 'Buzz';
   }
 
   if( i%3!==0 && i%5!==0 ){
-    result +=i;
+    idea1[i] = idea1[i] +=i;
   }
-
-  console.log( '--> i : ' + result );
 }
+console.log( idea1.join(', ') );
 
-
-var idea2 = Array.apply( null, Array( 30 ) ).map( function ( x, i ) { return i } ).map( function( i ) {
+// idea 2
+var idea2 = Array.apply( null, Array( 31 ) ).map( function ( x, i ) { return i } ).map( function( i ) {
   var result = '';
   if( i%3===0 ){
     result +='Fizz';
@@ -55,3 +56,19 @@ var idea2 = Array.apply( null, Array( 30 ) ).map( function ( x, i ) { return i }
   return result;
 });
 console.log( idea2.join(', ') );
+
+// idea 3
+var idea3 = Array.apply( null, Array( 31 ) ).map( function ( x, i ) { return i } )
+.map( function( i ) {
+  if( i%3===0 ){
+    return [i ,'Fizz'];
+  }
+  return [i, ''];
+})
+.map( function( i ) {
+  if( i[0]%5===0 ){
+    return i[1]+'Buzz';
+  }
+  return i[1] === '' ? i[0] : i[1];
+});
+console.log( idea3.join(', ') );
